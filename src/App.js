@@ -1,4 +1,7 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Root from './components/Root';
 import logo from './logo.svg';
 
 function App() {
@@ -18,6 +21,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <Provider store={store}>
+        <Root />
+      </Provider>
     </div>
   );
 }
