@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import Home from './Home';
 import Login from './Login';
+import Signup from './Signup';
 import Navbar from './Navbar';
 
 import { fetchUsers } from '../redux/users';
-// import { fetchStories } from '../redux/stories';
-import { fetchCurrentUser } from '../redux/auth';
+// import { fetchBill } from '../redux/bills';
+// import { fetchCurrentUser } from '../redux/auth';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -23,10 +24,11 @@ class Root extends Component {
 			    <Navbar />
 			    <Route exact path="/" component={Home} />
 			    <Route path="/login" component={Login} />
+				<Route path="/signup" component={Signup} />
 			    {/* <Route exact path="/users" component={UserList} />
 			    <Route path="/users/:id" component={UserDetail} />
-			    <Route exact path="/stories" component={StoryList} />
-			    <Route path="/stories/:id" component={StoryDetail} /> */}
+			    <Route exact path="/bills" component={BillList} />
+			    <Route path="/bill/:id" component={BillDetail} /> */}
 			  </div>
 		  </Router>
 		)
@@ -40,8 +42,8 @@ const mapState = null;
 const mapDispatch = dispatch => ({
   fetchInitialData: () => {
     dispatch(fetchUsers());
-    // dispatch(fetchStories());
-    dispatch(fetchCurrentUser());
+    // dispatch(fetchBillss());
+    // dispatch(fetchCurrentUser());
   }
 });
 

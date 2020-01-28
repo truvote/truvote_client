@@ -15,12 +15,11 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default">
-        <div className="container">
-          <div className="navbar-header">
+      <nav>
+        <div>
+          <div>
             <button
               type="button"
-              className="navbar-toggle collapsed"
               data-toggle="collapse"
               data-target=".navbar-collapse">
               <span className="icon-bar" />
@@ -35,7 +34,7 @@ class Navbar extends React.Component {
                 <NavLink to="/users" activeClassName="active">users</NavLink>
               </li>
               <li>
-                <NavLink to="/stories" activeClassName="active">stories</NavLink>
+                <NavLink to="/bills" activeClassName="active">bills</NavLink>
               </li>
             </ul>
             { this.props.currentUser.id ? this.renderLogout() : this.renderLoginSignup() }
@@ -47,7 +46,7 @@ class Navbar extends React.Component {
 
   renderLoginSignup() {
     return (
-      <ul className="nav navbar-nav navbar-right">
+      <ul>
         <li>
          <NavLink to="/signup" activeClassName="active">signup</NavLink>
         </li>
@@ -61,10 +60,9 @@ class Navbar extends React.Component {
   renderLogout() {
     const name = this.props.currentUser.name || this.props.currentUser.email;
     return (
-      <ul className="nav navbar-nav navbar-right">
+      <ul>
         <li>
         <button
-          className="navbar-btn btn btn-default"
           onClick={this.props.logout}>
           logout {name}
         </button>
@@ -77,13 +75,6 @@ class Navbar extends React.Component {
 /* -----------------    CONTAINER     ------------------ */
 
 const mapState = ({currentUser}) => ({ currentUser });
-
-// // equivalent to:
-// const mapState = state => {
-//   return {
-//     currentUser: state.currentUser
-//   };
-// };
 
 const mapDispatch = (dispatch, ownProps) => ({
   logout: () => {

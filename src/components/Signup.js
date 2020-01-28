@@ -1,22 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { login as loginFromReducer} from '../redux/auth';
+import { signup } from '../redux/auth';
 
 /* -----------------    COMPONENT     ------------------ */
 
-class Login extends React.Component {
+class Signup extends React.Component {
+
   constructor(props) {
     super(props);
-    this.onLoginSubmit = this.onLoginSubmit.bind(this);
+    this.onSignupSubmit = this.onSignupSubmit.bind(this);
   }
 
   render() {
     const { message } = this.props;
     return (
-      <div>
-        <div>
-          <form onSubmit={this.onLoginSubmit}>
+      <div >
+        <div >
+          <form onSubmit={this.onSignupSubmit}>
             <div >
               <label>email</label>
               <input
@@ -25,7 +25,7 @@ class Login extends React.Component {
                 required
               />
             </div>
-            <div>
+            <div >
               <label>password</label>
               <input
                 name="password"
@@ -41,7 +41,7 @@ class Login extends React.Component {
             <span>OR</span>
           </div>
         </div>
-        <div>
+        <div >
           <p>
             <a
               target="_self"
@@ -71,9 +71,9 @@ class Login extends React.Component {
     );
   }
 
-  onLoginSubmit(event) {
+  onSignupSubmit(event) {
     event.preventDefault();
-    this.props.login({
+    this.props.signup({
       email: event.target.email.value,
       password: event.target.password.value
     })
@@ -82,9 +82,13 @@ class Login extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapState = () => ({ message: 'Log in' });
-const mapDispatch = (dispatch, ownProps) => ({ 
-  login: credentials => dispatch(loginFromReducer(credentials, ownProps.history)) 
-});
+const mapState = () => ({ message: 'Sign up' });
 
-export default connect(mapState, mapDispatch)(Login);
+const mapDispatch = (dispatch, ownProps) => (
+  {
+    signup: credentials => {
+      dispatch(signup(credentials, ownProps.history));
+    }
+  })
+
+export default connect(mapState, mapDispatch)(Signup);

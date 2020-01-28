@@ -28,6 +28,7 @@ export default function reducer (currentUser = {}, action) {
 }
 
 /* ------------       THUNK CREATORS     ------------------ */
+const baseUrl = 'tru-api.herokuapp.com/api/v1'
 
 export const login = (credentials, history) => dispatch => {
   axios.put('/auth/local/login', credentials)

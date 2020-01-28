@@ -40,25 +40,31 @@ export default function reducer (users = [], action) {
 
 /* ------------       THUNK CREATORS     ------------------ */
 
+
+const baseUrl = 'tru-api.herokuapp.com/api/v1'
+
 export const fetchUsers = () => dispatch => {
-  axios.get('/api/users')
+  axios.get(`${baseUrl}/users`)
        .then(res => dispatch(init(res.data)));
 };
 
 export const removeUser = id => dispatch => {
-  axios.delete(`/api/users/${id}`)
+  axios.delete(`${baseUrl}/users/${id}`)
        .then(() => dispatch(remove(id)))
        .catch(err => console.error(`Removing user: ${id} unsuccesful`, err));
 };
 
 export const addUser = user => dispatch => {
-  axios.post('/api/users', user)
-       .then(res => dispatch(create(res.data)))
+  axios.post(`${baseUrl}/users`, user)
+       .then(res => {
+         console.log("response", res)
+         return dispatch(create(res.data))
+        })
        .catch(err => console.error(`Creating user: ${user} unsuccesful`, err));
 };
 
 export const updateUser = (id, user) => dispatch => {
-  axios.put(`/api/users/${id}`, user)
+  axios.put(`${baseUrl}/users/${id}`, user)
        .then(res => dispatch(update(res.data)))
        .catch(err => console.error(`Updating user: ${user} unsuccesful`, err));
 };
