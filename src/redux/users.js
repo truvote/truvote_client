@@ -41,7 +41,7 @@ export default function reducer (users = [], action) {
 /* ------------       THUNK CREATORS     ------------------ */
 
 
-const baseUrl = 'tru-api.herokuapp.com/api/v1'
+const baseUrl = 'truvote-api.herokuapp.com/api/v1'
 
 export const fetchUsers = () => dispatch => {
   axios.get(`${baseUrl}/users`)

@@ -6,9 +6,10 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import Navbar from './Navbar';
+import BillDetail from './BillDetail'
 
 import { fetchUsers } from '../redux/users';
-// import { fetchBill } from '../redux/bills';
+import { fetchBill } from '../redux/bills';
 // import { fetchCurrentUser } from '../redux/auth';
 
 /* -----------------    COMPONENT     ------------------ */
@@ -23,12 +24,12 @@ class Root extends Component {
 				<div id="main" className="container-fluid">
 			    <Navbar />
 			    <Route exact path="/" component={Home} />
-			    <Route path="/login" component={Login} />
+			    {/* <Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
-			    {/* <Route exact path="/users" component={UserList} />
+			    <Route exact path="/users" component={UserList} />
 			    <Route path="/users/:id" component={UserDetail} />
-			    <Route exact path="/bills" component={BillList} />
-			    <Route path="/bill/:id" component={BillDetail} /> */}
+			    <Route exact path="/bills" component={BillList} /> */}
+			    <Route path="/bill/:id" component={BillDetail} />
 			  </div>
 		  </Router>
 		)
